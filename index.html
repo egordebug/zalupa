@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Style Download</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f8fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn {
+      background-color: #2ea44f;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn:hover {
+      background-color: #2c974b;
+    }
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    #overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      transform: scale(0.8);
+      transition: transform 0.3s;
+    }
+    #overlay.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+    #overlay.visible img {
+      transform: scale(1);
+    }
+  </style>
+</head>
+<body>
+  <button class="btn" id="downloadBtn">Скачать</button>
+
+  <div id="overlay">
+    <img src="image.jpg" alt="Full Screen">
+  </div>
+
+  <script>
+    const btn = document.getElementById('downloadBtn');
+    const overlay = document.getElementById('overlay');
+
+    btn.addEventListener('click', () => {
+      overlay.classList.add('visible');
+    });
+
+    overlay.addEventListener('click', () => {
+      overlay.classList.remove('visible');
+    });
+  </script>
+</body>
+</html>
